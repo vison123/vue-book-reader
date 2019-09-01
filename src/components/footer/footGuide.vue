@@ -1,14 +1,14 @@
 <template>
   <footer id='foot_guide'>
-    <section @click="gotoAddress({path: '/home'})" class="guide_item">
-      <img v-if="$route.meta.selectedMenu !== 'Home'" class="icon_style" src="../../assets/svg/home.svg"/>
+    <section @click="gotoAddress({path: '/shelf'})" class="guide_item">
+      <img v-if="$route.meta.selectedMenu !== 'Shelf'" class="icon_style" src="../../assets/svg/home.svg"/>
       <img v-else class="icon_style" src="../../assets/svg/home_fill.svg"/>
-      <span>首页</span>
+      <span>书架</span>
     </section>
     <section @click="gotoAddress({path: `/message`})" class="guide_item">
       <img v-if="$route.meta.selectedMenu !== 'Message'" class="icon_style" src="../../assets/svg/message.svg"/>
       <img v-else class="icon_style" src="../../assets/svg/message_fill.svg"/>
-      <span>消息</span>
+      <span>分类</span>
     </section>
     <section @click="gotoAddress('/cart')" class="guide_item">
       <img v-if="$route.meta.selectedMenu !== 'Cart'" class="icon_style" src="../../assets/svg/cart.svg"/>

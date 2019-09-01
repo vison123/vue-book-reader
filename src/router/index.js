@@ -2,24 +2,26 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { routerMode } from '../framework/env'
 
-const Home = () => import(/* webpackChunkName: "home" */'@/pages/home/home')
+const Shelf = () => import(/* webpackChunkName: "home" */'@/pages/shelf/index')
 const Message = () => import(/* webpackChunkName: "search" */'@/pages/message/message')
 const Cart = () => import(/* webpackChunkName: "order" */'@/pages/cart/cart')
 const Profile = () => import(/* webpackChunkName: "profile" */'@/pages/profile/profile')
+const Search = () => import(/* webpackChunkName: "profile" */'@/pages/search/index')
+const BookDetail = () => import(/* webpackChunkName: "profile" */'@/components/BookDetail')
 
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
-    meta: { showFootMenu: true, selectedMenu: 'Home', showHeader: true, headTitle: '首页', showGoBack: false }
+    name: 'Shelf',
+    component: Shelf,
+    meta: { showFootMenu: true, selectedMenu: 'Shelf', showHeader: true, headTitle: '书架', showGoBack: false }
   }, {
-    path: '/home',
-    name: 'Home',
-    component: Home,
-    meta: { showFootMenu: true, selectedMenu: 'Home', showHeader: true, headTitle: '首页', showGoBack: false }
+    path: '/shelf',
+    name: 'Shelf',
+    component: Shelf,
+    meta: { showFootMenu: true, selectedMenu: 'Shelf', showHeader: true, headTitle: '书架', showGoBack: false }
   }, {
     path: '/message',
     name: 'Message',
@@ -35,6 +37,14 @@ const routes = [
     name: 'Profile',
     component: Profile,
     meta: { showFootMenu: true, selectedMenu: 'Profile', showHeader: true, headTitle: '我的', showGoBack: false }
+  }, {
+    path: '/search',
+    name: 'Search',
+    component: Search
+  }, {
+    path: '/bookdetail/:id',
+    name: 'bookdetail',
+    component: BookDetail
   }
 ]
 

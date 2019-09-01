@@ -6,7 +6,14 @@
       </keep-alive>
       <div v-else>
         <head-top v-show="meta.showHeader" :head-title="meta.headTitle"></head-top>
-        <router-view class="router" v-bind:class="{ 'app-foot-menu': meta.showFootMenu }"></router-view>
+        <router-view
+          class="router"
+          :class="{
+            'app-foot-margin': meta.showFootMenu,
+            'app-header-margin': meta.showHeader
+          }"
+        >
+        </router-view>
         <foot-guide v-show="meta.showFootMenu"></foot-guide>
         <div v-show="this.$store.getters.showLoading" class="cover" @touchmove.prevent @touchstart="hide($event)">
           <loading class="loading"></loading>
@@ -62,13 +69,17 @@ export default {
     flex-grow: 1;
   }
 
-  .app-foot-menu{
+  .app-foot-margin{
     margin-bottom: 1.95rem;
   }
 
+  .app-header-margin{
+    margin-top: 1.95rem;
+  }
+
   .router {
-    width: 100%;
-    height: 100%;
+    /*width: 100%;*/
+    /*height: 100%;*/
     background-color: #FFF;
   }
 

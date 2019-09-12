@@ -3,12 +3,12 @@ import Router from 'vue-router'
 import { routerMode } from '../framework/env'
 
 const Shelf = () => import(/* webpackChunkName: "home" */'@/pages/shelf/index')
-const Sort = () => import(/* webpackChunkName: "search" */'@/pages/sort/index')
-const Cart = () => import(/* webpackChunkName: "order" */'@/pages/cart/cart')
+const Sort = () => import(/* webpackChunkName: "sort" */'@/pages/sort/index')
+const Cart = () => import(/* webpackChunkName: "cart" */'@/pages/cart/cart')
 const Profile = () => import(/* webpackChunkName: "profile" */'@/pages/profile/profile')
-const Search = () => import(/* webpackChunkName: "profile" */'@/pages/search/index')
-const BookDetail = () => import(/* webpackChunkName: "profile" */'@/components/BookDetail')
-const Reader = () => import(/* webpackChunkName: "profile" */'@/pages/reader/index')
+const Search = () => import(/* webpackChunkName: "search" */'@/pages/search/index')
+const BookDetail = () => import(/* webpackChunkName: "book" */'@/components/BookDetail')
+const Reader = () => import(/* webpackChunkName: "reader" */'@/pages/reader/index')
 
 Vue.use(Router)
 

@@ -10,7 +10,7 @@ import Mint from 'mint-ui'
 
 // 开发环境mock数据
 if (process.env.NODE_ENV === 'development') {
-  // require('./mock')
+  require('./mock')
 }
 
 /* 路由发生变化修改页面title */

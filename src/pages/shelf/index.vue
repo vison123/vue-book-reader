@@ -1,6 +1,6 @@
 <template>
   <div class="shelf-wrapper">
-    <mt-button type="primary" plain="true" class="btn-add">
+    <mt-button type="primary" :plain="true" class="btn-add" @click="$router.push('/search')">
       <i class="iconfont icontianjia" style="color: #26a2ff"/>
     </mt-button>
     <!--<mt-button type="primary" style="margin-top: 10px" @click="$router.push('/search')">搜索</mt-button>-->

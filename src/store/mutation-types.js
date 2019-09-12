@@ -1,2 +1,0 @@
-export const SHOW_LOADING = 'SHOW_LOADING'
-export const SET_HOME_GOODS_DATA = 'SET_HOME_GOODS_DATA'

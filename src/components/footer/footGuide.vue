@@ -5,8 +5,8 @@
       <img v-else class="icon_style" src="../../assets/svg/home_fill.svg"/>
       <span>书架</span>
     </section>
-    <section @click="gotoAddress({path: `/message`})" class="guide_item">
-      <img v-if="$route.meta.selectedMenu !== 'Message'" class="icon_style" src="../../assets/svg/message.svg"/>
+    <section @click="gotoAddress({path: `/sort`})" class="guide_item">
+      <img v-if="$route.meta.selectedMenu !== 'Sort'" class="icon_style" src="../../assets/svg/message.svg"/>
       <img v-else class="icon_style" src="../../assets/svg/message_fill.svg"/>
       <span>分类</span>
     </section>

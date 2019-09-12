@@ -3,11 +3,12 @@ import Router from 'vue-router'
 import { routerMode } from '../framework/env'
 
 const Shelf = () => import(/* webpackChunkName: "home" */'@/pages/shelf/index')
-const Message = () => import(/* webpackChunkName: "search" */'@/pages/message/message')
+const Sort = () => import(/* webpackChunkName: "search" */'@/pages/sort/index')
 const Cart = () => import(/* webpackChunkName: "order" */'@/pages/cart/cart')
 const Profile = () => import(/* webpackChunkName: "profile" */'@/pages/profile/profile')
 const Search = () => import(/* webpackChunkName: "profile" */'@/pages/search/index')
 const BookDetail = () => import(/* webpackChunkName: "profile" */'@/components/BookDetail')
+const Reader = () => import(/* webpackChunkName: "profile" */'@/pages/reader/index')
 
 Vue.use(Router)
 
@@ -23,10 +24,10 @@ const routes = [
     component: Shelf,
     meta: { showFootMenu: true, selectedMenu: 'Shelf', showHeader: true, headTitle: '书架', showGoBack: false }
   }, {
-    path: '/message',
-    name: 'Message',
-    component: Message,
-    meta: { showFootMenu: true, selectedMenu: 'Message', showHeader: true, headTitle: '消息', showGoBack: false }
+    path: '/sort',
+    name: 'Sort',
+    component: Sort,
+    meta: { showFootMenu: true, selectedMenu: 'Sort', showHeader: true, headTitle: '分类', showGoBack: false }
   }, {
     path: '/cart',
     name: 'Cart',
@@ -45,6 +46,10 @@ const routes = [
     path: '/bookdetail/:id',
     name: 'bookdetail',
     component: BookDetail
+  }, {
+    path: '/reader/:id',
+    name: 'reader',
+    component: Reader
   }
 ]
 

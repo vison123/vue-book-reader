@@ -56,7 +56,7 @@
 <script type="text/ecmascript-6">
 import {mapState} from 'vuex'
 // import axios from 'axios'
-import Rate from '../components/rate/rate'
+import Rate from '@/components/rate/index'
 
 export default {
   data () {
@@ -160,7 +160,7 @@ export default {
         top: 10px;
         width: 30px;
         height: 30px;
-        background: url("../assets/image/back.png");
+        background: url("../../assets/image/back.png");
       }
       h2 {
         margin: 0 40px;
@@ -175,6 +175,7 @@ export default {
       padding: 15px 0 18px;
       .detail-img {
         width: 100px;
+        background: #CCCCCC;
         margin-right: 25px;
         img {
           width: 100%;

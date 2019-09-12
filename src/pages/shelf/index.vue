@@ -162,7 +162,9 @@ export default {
       }
 
       .book-image {
-        width: 80px;
+        width: 77px;
+        height: 102px;
+        background: #CCCCCC;
         img {
           width: 100%;
         }

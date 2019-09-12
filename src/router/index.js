@@ -4,10 +4,10 @@ import { routerMode } from '../framework/env'
 
 const Shelf = () => import(/* webpackChunkName: "home" */'@/pages/shelf/index')
 const Sort = () => import(/* webpackChunkName: "sort" */'@/pages/sort/index')
-const Cart = () => import(/* webpackChunkName: "cart" */'@/pages/cart/cart')
+const Ranking = () => import(/* webpackChunkName: "sort" */'@/pages/ranking/index')
 const Profile = () => import(/* webpackChunkName: "profile" */'@/pages/profile/profile')
 const Search = () => import(/* webpackChunkName: "search" */'@/pages/search/index')
-const BookDetail = () => import(/* webpackChunkName: "book" */'@/components/BookDetail')
+const BookDetail = () => import(/* webpackChunkName: "book" */'@/pages/book/detail')
 const Reader = () => import(/* webpackChunkName: "reader" */'@/pages/reader/index')
 
 Vue.use(Router)
@@ -29,10 +29,10 @@ const routes = [
     component: Sort,
     meta: { showFootMenu: true, selectedMenu: 'Sort', showHeader: true, headTitle: '分类', showGoBack: false }
   }, {
-    path: '/cart',
-    name: 'Cart',
-    component: Cart,
-    meta: { showFootMenu: true, selectedMenu: 'Cart', showHeader: true, headTitle: '购物车', showGoBack: false }
+    path: '/ranking',
+    name: 'Ranking',
+    component: Ranking,
+    meta: { showFootMenu: true, selectedMenu: 'Ranking', showHeader: true, headTitle: '排行榜', showGoBack: false }
   }, {
     path: '/profile',
     name: 'Profile',

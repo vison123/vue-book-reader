@@ -10,10 +10,10 @@
       <img v-else class="icon_style" src="../../assets/svg/message_fill.svg"/>
       <span>分类</span>
     </section>
-    <section @click="gotoAddress('/cart')" class="guide_item">
-      <img v-if="$route.meta.selectedMenu !== 'Cart'" class="icon_style" src="../../assets/svg/cart.svg"/>
+    <section @click="gotoAddress('/ranking')" class="guide_item">
+      <img v-if="$route.meta.selectedMenu !== 'Ranking'" class="icon_style" src="../../assets/svg/cart.svg"/>
       <img v-else class="icon_style" src="../../assets/svg/cart_fill.svg"/>
-      <span>购物车</span>
+      <span>排行榜</span>
     </section>
     <section @click="gotoAddress('/profile')" class="guide_item">
       <img v-if="$route.meta.selectedMenu !== 'Profile'" class="icon_style" src="../../assets/svg/my.svg"/>

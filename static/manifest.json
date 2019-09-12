@@ -1,0 +1,19 @@
+{
+  "name": "WeReader",
+  "short_name": "WeReader",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "description": "小说阅读器",
+  "orientation": "portrait",
+  "prefer_related_applications": false,
+  "theme_color": "#FFDF00",
+  "background_color": "#FFDF00",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "scope": "/"
+}

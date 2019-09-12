@@ -1,4 +1,4 @@
-import storage from './storage'
+// import storage from './storage'
 import axios from 'axios'
 import { baseUrl } from './env'
 
@@ -20,21 +20,21 @@ let fetcher = axios.create({
 // 请求头注入 用户信息等
 fetcher.interceptors.request.use(
   config => {
-    const userInfo = storage.get('user')
-    const loginType = storage.get('loginType')
+    // const userInfo = storage.get('user')
+    // const loginType = storage.get('loginType')
     config.headers = {
       'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-      accessToken: userInfo && userInfo.accessToken,
-      loginType: loginType && loginType
+      'Content-Type': 'application/json'
+      // accessToken: userInfo && userInfo.accessToken,
+      // loginType: loginType && loginType
     }
-    if (config.data && userInfo && userInfo.accessToken) {
-      config.data.accessToken = userInfo.accessToken
-    } else if (!config.data && userInfo && userInfo.accessToken) {
-      config.data = {
-        accessToken: userInfo.accessToken
-      }
-    }
+    // if (config.data && userInfo && userInfo.accessToken) {
+    //   config.data.accessToken = userInfo.accessToken
+    // } else if (!config.data && userInfo && userInfo.accessToken) {
+    //   config.data = {
+    //     accessToken: userInfo.accessToken
+    //   }
+    // }
     return config
   },
   error => {

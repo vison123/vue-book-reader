@@ -1,5 +1,5 @@
 <template>
-  <div id="reader">
+  <div id="reader" class="reader">
     <top-nav></top-nav>
     <div class="read-container" :bg="bg_color" :night="bg_night" ref="fz_size">
       <h4>{{title}}</h4>
@@ -214,60 +214,66 @@ export default {
 </script>
 
 <style lang="less" type="text/less">
-  .read-container {
-    font-size: 16px;
-    color: #555;
-    line-height: 31px;
-    min-height: 600px;
-    padding: 15px;
-    h4 {
-      position: fixed;
-      top: 0;
-      left: 15px;
-      right: 15px;
-      height: 50px;
-      line-height: 50px;
-      font-size: 20px;
-      color: #736357;
-      /*border-bottom: solid 1px #736357;*/
-      margin: 0 0 1em 0;
-      letter-spacing: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    p {
-      text-indent: 2em;
-      margin: 0.5em 0;
-      text-align: justify;
-      letter-spacing: 0px;
-      line-height: 1.5;
-    }
-    p:first-of-type {
-      margin-top: 43px;
-    }
-    .btn-bar {
-      z-index: 80;
-      width: 80%;
-      margin: 20px auto 0;
-      max-width: 800px;
-      .btn-tab {
-        padding-left: 0;
-        height: 34px;
-        line-height: 34px;
-        background-color: #000;
-        border-radius: 8px;
-        border: 1px solid #858382;
-        font-size: 14px;
-        opacity: 0.9;
-        li {
-          list-style-type: none;
-          display: inline-block;
-          width: 49%;
-          text-align: center;
-          color: #fff;
-          &:nth-child(1) {
-            border-right: 1px solid #858382;
+  .reader {
+    width: 100%;
+    height: 100%;
+    .read-container {
+      width: 100%;
+      height: 100%;
+      font-size: 16px;
+      color: #555;
+      line-height: 31px;
+      min-height: 600px;
+      padding: 15px;
+      h4 {
+        position: fixed;
+        top: 0;
+        left: 15px;
+        right: 15px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 20px;
+        color: #736357;
+        /*border-bottom: solid 1px #736357;*/
+        margin: 0 0 1em 0;
+        letter-spacing: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      p {
+        text-indent: 2em;
+        margin: 0.5em 0;
+        text-align: justify;
+        letter-spacing: 0px;
+        line-height: 1.5;
+      }
+      p:first-of-type {
+        margin-top: 43px;
+      }
+      .btn-bar {
+        z-index: 80;
+        width: 80%;
+        margin: 20px auto 0;
+        max-width: 800px;
+        .btn-tab {
+          padding-left: 0;
+          height: 34px;
+          line-height: 34px;
+          background-color: #000;
+          border-radius: 8px;
+          border: 1px solid #858382;
+          font-size: 14px;
+          opacity: 0.9;
+          li {
+            list-style-type: none;
+            display: inline-block;
+            width: 49%;
+            text-align: center;
+            color: #fff;
+            &:nth-child(1) {
+              border-right: 1px solid #858382;
+            }
           }
         }
       }

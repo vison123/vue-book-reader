@@ -98,7 +98,6 @@ export default {
     },
     // 图片加载失败是使用默认图片
     loadImage (e) {
-      this.common.defaultImage(e)
     }
   },
   computed: {

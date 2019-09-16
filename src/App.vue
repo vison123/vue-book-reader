@@ -4,7 +4,7 @@
       <keep-alive v-if="meta.keepAlive">
         <router-view></router-view>
       </keep-alive>
-      <div v-else>
+      <div v-else style="width: 100%;height: 100%">
         <head-top v-show="meta.showHeader" :head-title="meta.headTitle"></head-top>
         <router-view
           class="router"

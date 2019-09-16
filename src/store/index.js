@@ -1,10 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createLogger from 'vuex/dist/logger'
 import mutations from './mutations'
 import actions from './actions'
+import shelf from './modules/shelf'
 // import localEvent from './local'
 
 Vue.use(Vuex)
+
+let plugins = []
+if (process.env.NODE_ENV === 'development') {
+  plugins.push(createLogger())
+}
 
 const state = {
   bar: false,
@@ -23,5 +30,9 @@ const state = {
 export default new Vuex.Store({
   state,
   mutations,
-  actions
+  actions,
+  modules: {
+    shelf
+  },
+  plugins
 })

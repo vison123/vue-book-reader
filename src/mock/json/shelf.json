@@ -1,0 +1,35 @@
+{
+  "code": "0",
+  "result": {
+    "data": [
+      {
+        "id": 10046,
+        "images": "https://www.zwdu.com/files/article/image/10/10026/10026s.jpg",
+        "name": "逆天邪神",
+        "intro": "天毒之珠，承邪神之血，修逆天之力，一代邪神，君临天下！",
+        "author": "火星引力",
+        "serialize": "连载",
+        "wordcount": "12",
+        "currentChapter": "128",
+        "currentPage": "1"
+      },
+      {
+        "id": 29239,
+        "images": "https://www.zwdu.com/files/article/image/29/29209/29209s.jpg",
+        "name": "牧神记",
+        "intro": "大墟的祖训说，天黑，别出门。,　　大墟残老村的老弱病残们从江边捡到了一个婴儿，取名秦牧，含辛茹苦将他养大。这一天夜幕降临，黑暗笼罩大墟，秦牧走出了家门……,　　做个春风中荡漾的反派吧！,　　瞎子对他说。,　　秦牧的反派之路，正在崛起！",
+        "author": "宅猪",
+        "serialize": "连载",
+        "wordcount": "134",
+        "currentChapter": "128",
+        "currentPage": "1"
+      }
+    ],
+    "pageNo": 0,
+    "pageSize": 0,
+    "total": 0,
+    "totalPages": 0
+  },
+  "status": 200,
+  "timestamp": 1554691325551
+}

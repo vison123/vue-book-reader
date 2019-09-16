@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import { routerMode } from '../framework/env'
 
 const Shelf = () => import(/* webpackChunkName: "home" */'@/pages/shelf/index')
 const Sort = () => import(/* webpackChunkName: "sort" */'@/pages/sort/index')
@@ -55,5 +54,5 @@ const routes = [
 
 export default new Router({
   routes,
-  mode: routerMode
+  mode: 'hash'
 })

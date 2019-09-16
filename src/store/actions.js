@@ -1,6 +1,4 @@
 import * as types from './mutations-types'
-import fetch from '@/framework/fetch'
-import urls from '@/api/urls'
 
 export default {
   toggleBar ({commit}) {
@@ -35,12 +33,5 @@ export default {
   },
   curChapter ({commit}, num) {
     commit(types.CUR_CHAPTER, num)
-  },
-  getShelf ({ commit }, userid) {
-    fetch(urls.shelf, {})
-      .then(res => {
-        if (res && res.code === 0) {
-        }
-      })
   }
 }

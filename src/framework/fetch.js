@@ -1,7 +1,8 @@
-// import storage from './storage'
+import { baseUrl } from './fetchConfig'
 import axios from 'axios'
 import { Toast } from 'mint-ui'
 
+axios.defaults.baseURL = baseUrl
 axios.defaults.withCredentials = true
 // 请求头注入 用户信息等
 axios.interceptors.request.use(
@@ -48,19 +49,18 @@ axios.interceptors.response.use(
 export default function fetch (url, method, params) {
   return new Promise((resolve, reject) => {
     axios({
-      url: process.env.BASE_URL + url,
+      url: url,
       method: method,
       data: params
     })
       .then(response => {
-        let res = response.data
         // 异常请求 status !== 200, 统一弹窗提醒，业务代码无需处理
-        if (res.status && res.status !== 200) {
-          if (res.message) {
-            Toast(res.message)
+        if (response.status && response.status !== 200) {
+          if (response.message) {
+            Toast(response.message)
           }
         } else {
-          resolve(res)
+          resolve(response)
         }
       })
       .catch(error => {

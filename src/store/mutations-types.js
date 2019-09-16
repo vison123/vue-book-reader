@@ -20,3 +20,6 @@ export const CHOOSE_BOOK = 'CHOOSE_BOOK'
 export const SHOW_BOOK_DETAIL = 'SHOW_BOOK_DETAIL'
 // 当前章节
 export const CUR_CHAPTER = 'CUR_CHAPTER'
+
+// 获取书架内容
+export const GET_SHELF = 'GET_SHELF'

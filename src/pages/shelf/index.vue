@@ -30,107 +30,23 @@
 </template>
 
 <script>
+import {mapActions, mapState} from 'vuex'
 export default {
   data () {
-    return {
-      bookList: [{
-        id: 10046,
-        images: 'https://www.zwdu.com/files/article/image/10/10026/10026s.jpg',
-        name: '逆天邪神',
-        intro: '天毒之珠，承邪神之血，修逆天之力，一代邪神，君临天下！',
-        author: '火星引力',
-        serialize: '连载',
-        wordcount: '12'
-      }, {
-        id: 29239,
-        images: 'https://www.zwdu.com/files/article/image/29/29209/29209s.jpg',
-        name: '牧神记',
-        intro: '大墟的祖训说，天黑，别出门。,　　大墟残老村的老弱病残们从江边捡到了一个婴儿，取名秦牧，含辛茹苦将他养大。这一天夜幕降临，黑暗笼罩大墟，秦牧走出了家门……,　　做个春风中荡漾的反派吧！,　　瞎子对他说。,　　秦牧的反派之路，正在崛起！',
-        author: '宅猪',
-        serialize: '连载',
-        wordcount: '134'
-      }, {
-        id: 10026,
-        images: 'https://www.zwdu.com/files/article/image/10/10026/10026s.jpg',
-        name: '逆天邪神',
-        intro: '天毒之珠，承邪神之血，修逆天之力，一代邪神，君临天下！',
-        author: '火星引力',
-        serialize: '连载',
-        wordcount: '12'
-      }, {
-        id: 29219,
-        images: 'https://www.zwdu.com/files/article/image/29/29209/29209s.jpg',
-        name: '牧神记',
-        intro: '大墟的祖训说，天黑，别出门。,　　大墟残老村的老弱病残们从江边捡到了一个婴儿，取名秦牧，含辛茹苦将他养大。这一天夜幕降临，黑暗笼罩大墟，秦牧走出了家门……,　　做个春风中荡漾的反派吧！,　　瞎子对他说。,　　秦牧的反派之路，正在崛起！',
-        author: '宅猪',
-        serialize: '连载',
-        wordcount: '134'
-      }, {
-        id: 10021,
-        images: 'https://www.zwdu.com/files/article/image/10/10026/10026s.jpg',
-        name: '逆天邪神',
-        intro: '天毒之珠，承邪神之血，修逆天之力，一代邪神，君临天下！',
-        author: '火星引力',
-        serialize: '连载',
-        wordcount: '12'
-      }, {
-        id: 29202,
-        images: 'https://www.zwdu.com/files/article/image/29/29209/29209s.jpg',
-        name: '牧神记',
-        intro: '大墟的祖训说，天黑，别出门。,　　大墟残老村的老弱病残们从江边捡到了一个婴儿，取名秦牧，含辛茹苦将他养大。这一天夜幕降临，黑暗笼罩大墟，秦牧走出了家门……,　　做个春风中荡漾的反派吧！,　　瞎子对他说。,　　秦牧的反派之路，正在崛起！',
-        author: '宅猪',
-        serialize: '连载',
-        wordcount: '134'
-      }, {
-        id: 10023,
-        images: 'https://www.zwdu.com/files/article/image/10/10026/10026s.jpg',
-        name: '逆天邪神',
-        intro: '天毒之珠，承邪神之血，修逆天之力，一代邪神，君临天下！',
-        author: '火星引力',
-        serialize: '连载',
-        wordcount: '12'
-      }, {
-        id: 29204,
-        images: 'https://www.zwdu.com/files/article/image/29/29209/29209s.jpg',
-        name: '牧神记',
-        intro: '大墟的祖训说，天黑，别出门。,　　大墟残老村的老弱病残们从江边捡到了一个婴儿，取名秦牧，含辛茹苦将他养大。这一天夜幕降临，黑暗笼罩大墟，秦牧走出了家门……,　　做个春风中荡漾的反派吧！,　　瞎子对他说。,　　秦牧的反派之路，正在崛起！',
-        author: '宅猪',
-        serialize: '连载',
-        wordcount: '134'
-      }, {
-        id: 10025,
-        images: 'https://www.zwdu.com/files/article/image/10/10026/10026s.jpg',
-        name: '逆天邪神',
-        intro: '天毒之珠，承邪神之血，修逆天之力，一代邪神，君临天下！',
-        author: '火星引力',
-        serialize: '连载',
-        wordcount: '12'
-      }, {
-        id: 29206,
-        images: 'https://www.zwdu.com/files/article/image/29/29209/29209s.jpg',
-        name: '牧神记',
-        intro: '大墟的祖训说，天黑，别出门。,　　大墟残老村的老弱病残们从江边捡到了一个婴儿，取名秦牧，含辛茹苦将他养大。这一天夜幕降临，黑暗笼罩大墟，秦牧走出了家门……,　　做个春风中荡漾的反派吧！,　　瞎子对他说。,　　秦牧的反派之路，正在崛起！',
-        author: '宅猪',
-        serialize: '连载',
-        wordcount: '134'
-      }, {
-        id: 10027,
-        images: 'https://www.zwdu.com/files/article/image/10/10026/10026s.jpg',
-        name: '逆天邪神',
-        intro: '天毒之珠，承邪神之血，修逆天之力，一代邪神，君临天下！',
-        author: '火星引力',
-        serialize: '连载',
-        wordcount: '12'
-      }, {
-        id: 29208,
-        images: 'https://www.zwdu.com/files/article/image/29/29209/29209s.jpg',
-        name: '牧神记',
-        intro: '大墟的祖训说，天黑，别出门。,　　大墟残老村的老弱病残们从江边捡到了一个婴儿，取名秦牧，含辛茹苦将他养大。这一天夜幕降临，黑暗笼罩大墟，秦牧走出了家门……,　　做个春风中荡漾的反派吧！,　　瞎子对他说。,　　秦牧的反派之路，正在崛起！',
-        author: '宅猪',
-        serialize: '连载',
-        wordcount: '134'
-      }]
-    }
+    return {}
+  },
+  computed: {
+    ...mapState({
+      bookList: state => state.shelf.bookList
+    })
+  },
+  mounted () {
+    this.getShelf({})
+  },
+  methods: {
+    ...mapActions([
+      'getShelf'
+    ])
   }
 }
 </script>

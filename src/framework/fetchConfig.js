@@ -2,17 +2,17 @@ let baseUrl = '//book.visonsoft.cn'
 /*eslint-disable */
 if (process.env.NODE_ENV === 'production') {
   baseUrl = '//book.visonsoft.cn'
-  if (TEST) {
+  if (process.env.BUILD_ENV === 'TEST') {
     console.log('in TEST')
-    baseUrl = '//book.visonsoft.cn'
+    baseUrl = '//test.book.visonsoft.cn'
   }
-  if (PRE) {
+  if (process.env.BUILD_ENV === 'PRE') {
     console.log('in PRE')
-    baseUrl = '//book.visonsoft.cn'
+    baseUrl = '//pre.book.visonsoft.cn'
   }
-  if (PROD) {
+  if (process.env.BUILD_ENV === 'PROD') {
     console.log('in PROD')
-    baseUrl = '//book.visonsoft.cn'
+    baseUrl = '//prod.book.visonsoft.cn'
   }
 }
 

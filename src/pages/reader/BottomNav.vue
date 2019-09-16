@@ -17,13 +17,13 @@
       </div>
     </div>
     <div class="item" id="night-button" @click="swithNight">
-      <div class="item-warp" style="display:none" >
+      <div class="item-warp" v-if="!bg_night">
         <div class="icon-day"></div>
         <div class="icon-text">
           白天
         </div>
       </div>
-      <div class="item-warp">
+      <div class="item-warp" v-if="bg_night">
         <div class="icon-night"></div>
         <div class="icon-text">
           夜间
@@ -56,7 +56,7 @@ export default {
   },
   computed: {
     ...mapState([
-      'font_panel', 'list_panel', 'bar'/*, 'font_icon' */
+      'font_panel', 'list_panel', 'bar', 'bg_night'
     ])
   }
 }

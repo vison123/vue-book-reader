@@ -15,8 +15,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-import axios from 'axios'
-// import {mapState} from 'vuex'
+import {mapActions} from 'vuex'
 
 export default {
   data () {
@@ -34,6 +33,9 @@ export default {
     this.getList()
   },
   methods: {
+    ...mapActions([
+      'getAllChapters'
+    ]),
     jumpTo (index) {
       if (index >= 50) {
         index = 50
@@ -47,9 +49,10 @@ export default {
       this.$store.state.list_panel = false
     },
     getList () {
-      axios.get(`https://vue-reader.xyxxxx.xyz/api/titles?id=${this.bookId}`).then(res => {
-        this.chapterList = res.data.titles.split('-')
-      })
+      this.getAllChapters({id: this.bookId})
+        .then(res => {
+          this.chapterList = res.titles.split('-')
+        })
     }
   }
 }

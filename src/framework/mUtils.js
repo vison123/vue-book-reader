@@ -78,7 +78,7 @@ export const loadMore = (element, callback) => {
 
   const moveEnd = () => {
     requestFram = requestAnimationFrame(() => {
-      if (document.body.scrollTop != oldScrollTop) {
+      if (document.body.scrollTop !== oldScrollTop) {
         oldScrollTop = document.body.scrollTop
         loadMore()
         moveEnd()
@@ -94,51 +94,6 @@ export const loadMore = (element, callback) => {
   const loadMore = () => {
     if (document.body.scrollTop + windowHeight >= height + setTop + paddingBottom + marginBottom) {
       callback()
-    }
-  }
-}
-
-/**
- * 显示返回顶部按钮，开始、结束、运动 三个过程中调用函数判断是否达到目标点
- */
-export const showBack = callback => {
-  let requestFram
-  let oldScrollTop
-
-  document.addEventListener('scroll', () => {
-    showBackFun()
-  }, false)
-  document.addEventListener('touchstart', () => {
-    showBackFun()
-  }, {passive: true})
-
-  document.addEventListener('touchmove', () => {
-    showBackFun()
-  }, {passive: true})
-
-  document.addEventListener('touchend', () => {
-    oldScrollTop = document.body.scrollTop
-    moveEnd()
-  }, {passive: true})
-
-  const moveEnd = () => {
-    requestFram = requestAnimationFrame(() => {
-      if (document.body.scrollTop != oldScrollTop) {
-        oldScrollTop = document.body.scrollTop
-        moveEnd()
-      } else {
-        cancelAnimationFrame(requestFram)
-      }
-      showBackFun()
-    })
-  }
-
-  // 判断是否达到目标点
-  const showBackFun = () => {
-    if (document.body.scrollTop > 500) {
-      callback(true)
-    } else {
-      callback(false)
     }
   }
 }
@@ -185,8 +140,8 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
 
   // 获取目标属性单位和初始样式值
   Object.keys(target).forEach(attr => {
-    if (/[^\d^\.]+/gi.test(target[attr])) {
-      unit[attr] = target[attr].match(/[^\d^\.]+/gi)[0] || 'px'
+    if (/[^\d^]+/gi.test(target[attr])) {
+      unit[attr] = target[attr].match(/[^\d^]+/gi)[0] || 'px'
     } else {
       unit[attr] = 'px'
     }
@@ -195,7 +150,7 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
 
   // 去掉传入的后缀单位
   Object.keys(target).forEach(attr => {
-    if (unit[attr] == 'rem') {
+    if (unit[attr] === 'rem') {
       target[attr] = Math.ceil(parseInt(target[attr]) * rootSize)
     } else {
       target[attr] = parseInt(target[attr])
@@ -236,7 +191,7 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
       // 判断是否达步长之内的误差距离，如果到达说明到达目标点
       switch (mode) {
         case 'ease-out':
-          status = iCurrent != target[attr]
+          status = iCurrent !== target[attr]
           break
         case 'linear':
           status = Math.abs(Math.abs(iCurrent) - Math.abs(target[attr])) > Math.abs(iSpeed)
@@ -245,7 +200,7 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
           status = Math.abs(Math.abs(iCurrent) - Math.abs(target[attr])) > Math.abs(iSpeed)
           break
         default:
-          status = iCurrent != target[attr]
+          status = iCurrent !== target[attr]
       }
 
       if (status) {
@@ -271,4 +226,12 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
       }
     })
   }, 20)
+}
+
+export const getBattery = () => {
+  return navigator.getBattery()
+    .then(function (battery) {
+      console.log(battery.level * 100 + '%')
+      return battery.level * 100 + '%'
+    })
 }

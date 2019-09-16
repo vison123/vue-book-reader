@@ -28,8 +28,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { mapState } from 'vuex'
-import axios from 'axios'
+import { mapState, mapActions } from 'vuex'
 import localEvent from '../../store/local'
 import TopNav from './TopNav'
 import BottomNav from './BottomNav'
@@ -47,7 +46,8 @@ export default {
       content: [],
       loading: false,
       showList: false,
-      booksReadInfo: {}
+      booksReadInfo: {},
+      battery: '0%'
     }
   },
   components: {
@@ -99,6 +99,9 @@ export default {
     this.$refs.fz_size.style.fontSize = this.fz_size + 'px'
   },
   methods: {
+    ...mapActions([
+      'getBookContentByChapterId'
+    ]),
     // 切换上下工具栏，如果字体面板显示点击也关闭
     clickBar () {
       this.$store.dispatch('toggleBar')
@@ -143,14 +146,14 @@ export default {
     },
     getData (id, chapter) {
       this.loading = true
-      axios
-        // .get(`${this.common.api}/book?book=${id}&id=${chapter}`)
-        .get('https://vue-reader.xyxxxx.xyz/api/book?book=1&id=2')
-        .then(data => {
-          this.loading = false // 获取完毕后隐藏动画
-          this.title = data.data.title
-          this.content = data.data.content.split('-')
-        })
+      this.getBookContentByChapterId({
+        book: 1,
+        id: 2
+      }).then(data => {
+        this.loading = false // 获取完毕后隐藏动画
+        this.title = data.title
+        this.content = data.content.split('-')
+      })
       this.$store.state.windowHeight = window.screen.height
     },
     prevChapter () {
@@ -219,11 +222,10 @@ export default {
     height: 100%;
     .read-container {
       width: 100%;
-      height: 100%;
+      min-height: 100%;
       font-size: 16px;
       color: #555;
       line-height: 31px;
-      min-height: 600px;
       padding: 15px;
       h4 {
         position: fixed;

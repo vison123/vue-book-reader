@@ -4,6 +4,7 @@ import createLogger from 'vuex/dist/logger'
 import mutations from './mutations'
 import actions from './actions'
 import shelf from './modules/shelf'
+import reader from './modules/reader'
 // import localEvent from './local'
 
 Vue.use(Vuex)
@@ -32,7 +33,8 @@ export default new Vuex.Store({
   mutations,
   actions,
   modules: {
-    shelf
+    shelf,
+    reader
   },
   plugins
 })

@@ -1,5 +1,6 @@
 <template>
   <div id="reader" class="reader">
+    <top-nav></top-nav>
     <div class="read-container" :bg="bg_color" :night="bg_night" ref="fz_size">
       <swiper :options="swiperOption" v-show="!loading">
         <swiper-slide v-for="(lines,i) in content" :key="i">
@@ -28,17 +29,12 @@
         </swiper-slide>
       </swiper>
     </div>
-    <!--<div class="page-up" @click="pageUp()"></div>-->
-    <!--<div class="click-mask" @click="clickBar"></div>-->
-    <!--<div class="page-down" @click="pageDown()"></div>-->
-    <!--<div class="top-nav-pannel-bk font-container" v-show="font_panel"></div>-->
-    <!--<font-nav></font-nav>-->
-    <!--<bottom-nav></bottom-nav>-->
-    <!--<transition name="fade">-->
-    <!--<cover :class="{hide:!list_panel}"></cover>-->
-    <!--<list-panel :class="{show: list_panel}" :bookId="$route.params.id"></list-panel>-->
+    <div class="top-nav-pannel-bk font-container" v-show="font_panel"></div>
+    <font-nav></font-nav>
+    <bottom-nav></bottom-nav>
+    <cover :class="{hide:!list_panel}"></cover>
+    <list-panel :class="{show: list_panel}" :bookId="$route.params.id"></list-panel>
     <loading v-show="loading"></loading>
-    <!--</transition>-->
   </div>
 </template>
 
@@ -56,6 +52,16 @@ import 'swiper/dist/css/swiper.css'
 import {getBattery} from '../../framework/mUtils'
 
 export default {
+  components: {
+    TopNav,
+    BottomNav,
+    FontNav,
+    ListPanel,
+    Cover,
+    Loading,
+    swiper,
+    swiperSlide
+  },
   data () {
     return {
       bar: false,
@@ -69,19 +75,35 @@ export default {
       swiperOption: {
         width: window.innerWidth,
         height: window.innerHeight,
-        autoHeight: false
+        on: {
+          click: this.clickBar
+        }
       }
     }
   },
-  components: {
-    TopNav,
-    BottomNav,
-    FontNav,
-    ListPanel,
-    Cover,
-    Loading,
-    swiper,
-    swiperSlide
+  computed: {
+    ...mapState([
+      'font_panel',
+      'bg_color',
+      'fz_size',
+      'bg_night',
+      'curChapter',
+      'windowHeight',
+      'list_panel'
+    ])
+  },
+  watch: {
+    // 监听fz_size的值更改背景色
+    fz_size (val, oldVal) {
+      this.$refs.fz_size.style.fontSize = val + 'px'
+      localEvent.StorageSetter('fz_size', val)
+    },
+    // 监听当前章节的改变，保存到本地并获取数据
+    curChapter (val, oldVal) {
+      localEvent.StorageSetter('cur_chapter', val)
+      this.saveBooksInfo()
+      this.getData(this.$route.params.id, val)
+    }
   },
   created () {
     // 判断本地是否存储了阅读器文字大小
@@ -136,16 +158,6 @@ export default {
     clickBar () {
       this.$store.dispatch('toggleBar')
       this.$store.state.font_panel = false
-    },
-    // 向上翻页
-    pageUp () {
-      let target = document.body.scrollTop - window.screen.height - 80
-      this.startScroll(target, -20)
-    },
-    // 向下翻页
-    pageDown () {
-      let target = document.body.scrollTop + window.screen.height - 80
-      this.startScroll(target, 20)
     },
     startScroll (target, speed) {
       let times = null
@@ -255,30 +267,6 @@ export default {
         this.prevChapter()
       }
     }
-  },
-  computed: {
-    ...mapState([
-      'font_panel',
-      'bg_color',
-      'fz_size',
-      'bg_night',
-      'curChapter',
-      'windowHeight',
-      'list_panel'
-    ])
-  },
-  watch: {
-    // 监听fz_size的值更改背景色
-    fz_size (val, oldVal) {
-      this.$refs.fz_size.style.fontSize = val + 'px'
-      localEvent.StorageSetter('fz_size', val)
-    },
-    // 监听当前章节的改变，保存到本地并获取数据
-    curChapter (val, oldVal) {
-      localEvent.StorageSetter('cur_chapter', val)
-      this.saveBooksInfo()
-      this.getData(this.$route.params.id, val)
-    }
   }
 }
 </script>
@@ -307,7 +295,7 @@ export default {
       }
 
       .first-line {
-        text-indent: 25px;
+        text-indent: 35px;
       }
       .top-area {
         span {

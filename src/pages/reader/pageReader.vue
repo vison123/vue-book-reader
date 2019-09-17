@@ -16,15 +16,15 @@
               v-for="(line, key) in slide"
               :key="key"
               :class="{'read-line': true, 'first-line': line.indexOf('  ') === 0}"
-             >
+            >
               {{line}}
             </p>
             <div class="bottom-area">
-          <span>
-          <i class="iconfont icondianliang-"></i>
-          {{`${new Date().getHours()}:${new Date().getMinutes()}`}}
-          </span>
-              <span>{{battery}}</span>
+              <span>
+                <i class="iconfont icondianliang-"></i>
+                {{battery}}
+              </span>
+              <span>{{`${new Date().getHours()}:${new Date().getMinutes()}`}}</span>
             </div>
           </div>
         </swiper-slide>

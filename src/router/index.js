@@ -7,7 +7,7 @@ const Ranking = () => import(/* webpackChunkName: "sort" */'@/pages/ranking/inde
 const Profile = () => import(/* webpackChunkName: "profile" */'@/pages/profile/profile')
 const Search = () => import(/* webpackChunkName: "search" */'@/pages/search/index')
 const BookDetail = () => import(/* webpackChunkName: "book" */'@/pages/book/detail')
-const Reader = () => import(/* webpackChunkName: "reader" */'@/pages/reader/index')
+const Reader = () => import(/* webpackChunkName: "reader" */'@/pages/reader/pageReader')
 
 Vue.use(Router)
 

@@ -8,7 +8,7 @@
               <span>{{title}}</span>
               <span>{{`${i + 1}/${content.length}`}}</span>
             </div>
-            <div class="center-area">
+            <div class="center-area" :style="{height: swiperOption.height - 60 + 'px'}">
               <p
                 v-for="(line, key) in lines"
                 :key="key"
@@ -43,8 +43,8 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { mapState, mapActions } from 'vuex'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import {mapActions, mapState} from 'vuex'
+import {swiper, swiperSlide} from 'vue-awesome-swiper'
 import localEvent from '../../store/local'
 import TopNav from './TopNav'
 import BottomNav from './BottomNav'
@@ -181,25 +181,26 @@ export default {
         id: 2
       }).then(data => {
         this.title = data.title
-        // 分割字符串
-        let lineArr = []
-        data.content.split('-').forEach(paragraph => {
-          let str = '  '.concat(paragraph)
-          // 每行容纳字数
-          let n = Math.floor((window.innerWidth - 20) / this.fz_size)
-          for (let i = 0, l = str.length; i < l / n; i++) {
-            let a = str.slice(n * i, n * (i + 1))
-            lineArr = lineArr.concat(a)
-          }
-        })
-        // 每页容纳行数
-        let lineNum = Math.floor((window.innerHeight - 60) / (this.fz_size * 1.5 + 10))
-        let pageArr = this.chunk(lineArr, lineNum)
-        console.log(pageArr)
-        this.content = pageArr
+        this.content = this.splitPage(data.content)
         this.loading = false // 获取完毕后隐藏动画
       })
       this.$store.state.windowHeight = window.screen.height
+    },
+    splitPage (data) {
+      // 分割字符串
+      let lineArr = []
+      data.split('-').forEach(paragraph => {
+        let str = '  '.concat(paragraph)
+        // 每行容纳字数
+        let n = Math.floor((window.innerWidth - 20) / this.fz_size)
+        for (let i = 0, l = str.length; i < l / n; i++) {
+          let a = str.slice(n * i, n * (i + 1))
+          lineArr = lineArr.concat(a)
+        }
+      })
+      // 每页容纳行数
+      let lineNum = Math.floor((window.innerHeight - 60) / (this.fz_size * 1.5 + 10))
+      return this.chunk(lineArr, lineNum)
     },
     chunk (array, size) {
       // 获取数组的长度，如果你传入的不是数组，那么获取到的就是undefined
@@ -296,6 +297,7 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
       }
       .read-line {
         padding: 5px 10px;

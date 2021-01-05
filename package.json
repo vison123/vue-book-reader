@@ -16,7 +16,7 @@
     "build": "BUILD_ENV=prod node build/build.js"
   },
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "better-scroll": "^1.15.2",
     "fastclick": "^1.0.6",
     "mint-ui": "^2.2.13",
